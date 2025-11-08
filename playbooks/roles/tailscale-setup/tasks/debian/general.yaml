@@ -27,4 +27,4 @@
 
 - name: Start Tailscale
   ansible.builtin.command:
-    cmd: "tailscale up --ssh --authkey={{ auth_key }} --hostname={{ hostname }}"
+    cmd: "tailscale up --ssh --authkey={{ auth_key }} --hostname={{ hostname }}{% if advertise_exit_node | lower in ['true', 'yes', 'y', '1'] %} --advertise-exit-node{% endif %}"
